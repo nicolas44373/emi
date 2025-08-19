@@ -18,9 +18,11 @@ export default function Effects() {
         pContainer.appendChild(d)
       }
     }
+
     // hearts
     const hContainer = document.querySelector('.hearts') as HTMLElement | null
-    let interval: any
+    let interval: ReturnType<typeof setInterval> | null = null
+
     if (hContainer) {
       interval = setInterval(() => {
         if (Math.random() > 0.7) {
@@ -36,7 +38,10 @@ export default function Effects() {
         }
       }, 2000)
     }
-    return () => interval && clearInterval(interval)
+
+    return () => {
+      if (interval) clearInterval(interval)
+    }
   }, [])
 
   return (

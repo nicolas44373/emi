@@ -139,9 +139,10 @@ export default function Book({
                   tabIndex={-1}
                   className="min-h-[60vh] md:min-h-[72vh] px-5 sm:px-7 md:px-8 py-6 md:py-8 leading-relaxed text-[15.5px] sm:text-base md:text-[17px]"
                 >
+                  {/* ✅ tipado correcto (ChapterData tiene paragraphs: string[]) */}
                   <Chapter
                     title={current.title}
-                    paragraphs={(current as any).paragraphs ?? []}
+                    paragraphs={current?.paragraphs ?? []}
                     onBack={() => setSelectedChapter(null)}
                   />
                 </article>
